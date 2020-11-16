@@ -1,4 +1,6 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useRef} from 'react'
+import HEAD from 'next/head'
+import {useRouter} from 'next/router'
 
 import {Provider} from 'react-redux'
 
@@ -7,16 +9,69 @@ import initialState from '../src/store/initial-state'
 
 import '../styles/globals.css'
 
+import Box from '@material-ui/core/Box'
+import { Grid } from '@material-ui/core'
+import {makeStyles} from '@material-ui/core/styles'
+
+import Nav from '../src/components/nav/nav'
+import ResponsiveDrawer from '../src/components/responsive-drawer'
+
 function MyApp({ Component, pageProps }) {
   const [store, setStore] = useState(storeFactory())
+  const [openMobileDrawer, setOpenMobileDrawer] = useState(false)
+  const router = useRouter()
+  const bodyContainer = useRef()
   useEffect(() => {
     if(typeof window !== 'undefined') {
       setStore(storeFactory())
     }
-  }, [])
+  }, [router.pathname])
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <HEAD>
+        <link
+        rel="manifest"
+        href="/manifest.json" />
+      </HEAD>
+      <Box
+      ref={bodyContainer} paddingTop="0">
+        <Grid
+        container>
+          <Grid
+          item
+          xs={0}
+          md={2}>
+            <Box
+            maxWidth="100%">
+            <ResponsiveDrawer
+            toggled={openMobileDrawer}
+            toggleDrawer={setOpenMobileDrawer} />
+            </Box>
+          </Grid>
+          <Grid
+          item
+          xs={12}
+          md={10}
+          spacing={3}>
+            <Grid
+            container>
+              <Grid
+              item
+              xs={12}>
+                <Nav
+                toggled={openMobileDrawer}
+                togglleDrawer={setOpenMobileDrawer} 
+                container={bodyContainer.current}/>
+              </Grid>
+              <Grid
+              item
+              xs={12}>
+                <Component {...pageProps} />
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Box>
     </Provider>
   )
 }
