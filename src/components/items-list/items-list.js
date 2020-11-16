@@ -10,10 +10,18 @@ import TableCell from '@material-ui/core/TableCell'
 import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles({
+    root: {
+        overflow: "scroll"
+    },
     table: {
-        minWidth: 650,
         textAlign: 'right',
-    }
+        ['& .MuiTableCell-root']: {
+            textAlign: "right"
+        },
+        ['& .MuiTableCell-root:nth-child(1)']: {
+            minWidth: 200
+        }
+    },
 })
 
 export default function ItemsList({items}) {
@@ -25,7 +33,6 @@ export default function ItemsList({items}) {
             className={classes.table}>
                 <TableHead>
                     <TableRow>
-                        <TableCell>آیدی</TableCell>
                         <TableCell>نام کالا</TableCell>
                         <TableCell>گروه</TableCell>
                         <TableCell>موحودی</TableCell>
@@ -36,7 +43,6 @@ export default function ItemsList({items}) {
                 <TableBody>
                     {items.map(item =>
                         <TableRow key={item.name}>
-                            <TableCell>{item.id}</TableCell>
                             <TableCell>{item.name}</TableCell>
                             <TableCell>{item.group}</TableCell>
                             <TableCell>{item.remAmount}</TableCell>
