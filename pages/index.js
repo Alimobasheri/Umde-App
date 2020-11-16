@@ -6,16 +6,14 @@ import Nav from '../src/components/nav/nav'
 
 import Items from "../src/containers/items/items";
 import NewItemForm from '../src/containers/new-item-form/new-item-form';
+import Dashboard from '../src/containers/dashboard/dashboard'
 
 export default function App() {
   return (
-    <Box p={2} marginY={3}>
+    <Box>
       <Grid container spacing={1}>
         <Grid item xs={12} md={9}>
-          <Items />
-        </Grid>
-        <Grid item xs={12} md={3}>
-          <NewItemForm/>
+          <Dashboard />
         </Grid>
       </Grid>
     </Box>
