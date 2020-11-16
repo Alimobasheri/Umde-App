@@ -7,11 +7,19 @@ import Typography from '@material-ui/core/typography'
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        maxWidth: '90vw',
         padding: theme.spacing(1),
+        margin: theme.spacing(1),
         '& .MuiButton-root': {
             marginTop: theme.spacing(1)
         },
+        '& .MuiTextField-root': {
+            display: "block"
+        }
     },
+    formWrapper: {
+        padding: theme.spacing(2)
+    }
 }))
 
 export default function NewItemForm ({
@@ -39,15 +47,16 @@ export default function NewItemForm ({
     }
 
     return (
-        <Grid component={Paper} className={classes.root} container xs={12} spacing={3}>
+        <Grid component={Paper} className={classes.root} container justify="center" alignItems="center" spacing={3}>
             <Typography
-            variant="h3"
+            variant="h5"
             component="h2">
                 افزودن کالای جدید
             </Typography>
             <form 
             onSubmit={onItemSubmit}>
-                <Grid item xs={12}>
+                <Grid
+                className={classes.formWrapper} item xs={12}>
                 <TextField
                 required
                 label="نام کالا"
