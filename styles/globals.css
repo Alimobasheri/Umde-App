@@ -1,10 +1,20 @@
 html,
 body {
   padding: 0;
+  padding-bottom: 1vh;
   margin: 0;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+  direction: 'rtl';
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     direction: rtl;
+}
+
+*, *::after, *::before{
+  box-sizing: border-box;
 }
 
 a {
