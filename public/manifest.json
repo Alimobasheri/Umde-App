@@ -1,0 +1,10 @@
+{
+    "name": "Umde - Wholesale Store Management Application",
+    "short_name": "Umde",
+    "dir": "rtl",
+    "lang": "fa-IR",
+    "background_color": "#FFF",
+    "start_url": "/",
+    "scope": ".",
+    "display": "standalone"
+}
