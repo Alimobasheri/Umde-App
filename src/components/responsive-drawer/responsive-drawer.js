@@ -18,12 +18,12 @@ const useStyles = makeStyles(theme => ({
     toolbar: theme.mixins.toolbar,
     drawer: {
         [theme.breakpoints.up("sm")]: {
-            width: '16.6vw',
+            width: '16vw',
             flexShrink: 0,
         }
     },
     drawerPaper: {
-        width: '16.6vw'
+        width: '16vw'
     }
 }))
 
