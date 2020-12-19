@@ -4,7 +4,7 @@
     "dir": "rtl",
     "lang": "fa-IR",
     "background_color": "#FFF",
-    "start_url": "/",
+    "start_url": "/?source=pwa",
     "scope": ".",
     "display": "standalone"
 }
