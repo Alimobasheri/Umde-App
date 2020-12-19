@@ -1,25 +1,22 @@
 import { connect } from 'react-redux'
 
 import actions from '../../actions/action-creators'
-import NewItemForm from '../../components/new-item-form/new-item-form'
+import ItemEditionBase from '../../components/Items-Components/edit-item/edit-item'
 
 const mapStateToProps = state => ({
-    newItem: state.items.newItem
+    editingItem: state.items.newItem
 })
 
 const mapDispatchToProps = dispatch => ({
-    onAddNewItem() {
+    onApplyItem() {
         dispatch(actions.addNewItem())
     },
-    onDisplayNewItemForm(shouldDisplay) {
-        dispatch(actions.displayNewItemForm(shouldDisplay))
-    },
-    onResetNewItem() {
+    onResetItem() {
         dispatch(actions.resetNewItem())
     },
-    onUpdateNewItem(itemProperty, itemPropertyValue) {
+    onUpdateItem(itemProperty, itemPropertyValue) {
         dispatch(actions.updateNewItem(itemProperty, itemPropertyValue))
     },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewItemForm)
+export default connect(mapStateToProps, mapDispatchToProps)(ItemEditionBase)
