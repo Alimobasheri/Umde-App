@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 
 import actions from '../../actions/action-creators'
-import Items from '../../components/items/items'
+import Items from '../../components/Items-Components/items/items'
 
 const mapStateToProps = state => ({
     items: state.items
