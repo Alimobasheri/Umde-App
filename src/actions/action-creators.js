@@ -37,6 +37,10 @@ actions.applyEditingItem = (id) => ({
     id
 })
 
+actions.unsetEditingItem = () => ({
+    type: ACTION_TYPES.UNSET_EDITING_ITEM
+})
+
 actions.setViewingItem = (id) => ({
     type: ACTION_TYPES.SET_VIEWING_ITEM,
     id
