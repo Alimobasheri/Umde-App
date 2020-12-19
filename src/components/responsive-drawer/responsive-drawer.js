@@ -13,17 +13,55 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn'
 import ListIcon from '@material-ui/icons/List'
 import ContactsIcon from '@material-ui/icons/Contacts'
 import DashboardIcon from '@material-ui/icons/Dashboard'
+import CloseIcon from '@material-ui/icons/Close'
+import { Button, Typography } from '@material-ui/core'
+import IconButton from '@material-ui/core/IconButton'
 
 const useStyles = makeStyles(theme => ({
-    toolbar: theme.mixins.toolbar,
     drawer: {
-        [theme.breakpoints.up("sm")]: {
-            width: '16vw',
+        position: "relative",
+        display: "flex",
+        justifyContent: "flex-start",
+        alignItems: "stretch",
+        alignSelf: "stretch",
+        minHeight: '100%',
+        [theme.breakpoints.down("sm")]: {
+            width: '100%',
             flexShrink: 0,
+            maxWidth: '240px'
+        }
+    },
+    root: {
+        width: '100%',
+        display: 'flex',
+        alignSelf: "flex-start",
+        position: "relative",
+        justifyContent: "flex-start",
+        alignItems: "stretch"
+    },
+    toolbar: {
+        ...theme.mixins.toolbar,
+        position: "relative",
+        width: "100%",
+        maxWidth: "100%",
+        alignSelf: "stretch",
+        padding: `${theme.spacing(8)}px ${theme.spacing(2)}px`
+    },
+    persistentDrawer: {
+        width: '100%',
+        position: "relative",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '240px'
         }
     },
     drawerPaper: {
-        width: '16vw'
+        width: '100%',
+        position: "relative",
+        display: "block",
+        alignSelf: "center"
     }
 }))
 
@@ -31,9 +69,18 @@ export default function ResponsiveDrawer({toggled, toggleDrawer}) {
     const classes = useStyles()
 
     const menu = (
-        <div>
+        <div
+        className={classes.root}>
             <div
-            className={classes.toolbar} />
+            className={classes.toolbar}>
+                <Hidden
+                mdUp>
+                    <IconButton
+                    className={classes.closeMenuButton}
+                    onClick={e => toggleDrawer(false)}>
+                        <CloseIcon />
+                    </IconButton>
+                </Hidden>
             <Divider />
             <List
             component="nav">
@@ -59,13 +106,16 @@ export default function ResponsiveDrawer({toggled, toggleDrawer}) {
                 </Link>
             </List>
             <List>
-                <ListItem button>
-                    <ListItemIcon>
-                        <MonetizationOnIcon />
-                    </ListItemIcon>
-                    <ListItemText
-                    primary="حسابهای تجاری" />
-                </ListItem>
+                <Link
+                href="/trades">
+                    <ListItem button>
+                        <ListItemIcon>
+                            <MonetizationOnIcon />
+                        </ListItemIcon>
+                        <ListItemText
+                        primary="معاملات" />
+                    </ListItem>
+                </Link>
             </List>
             <List>
                 <ListItem button>
@@ -76,6 +126,7 @@ export default function ResponsiveDrawer({toggled, toggleDrawer}) {
                     primary="مخاطبان" />
                 </ListItem>
             </List>
+            </div>
         </div>
     )
 
@@ -107,6 +158,7 @@ export default function ResponsiveDrawer({toggled, toggleDrawer}) {
                 variant="persistent"
                 anchor="rtl"
                 open
+                className={classes.persistentDrawer}
                 classes= {{
                     paper: classes.drawerPaper
                 }}>
