@@ -6,6 +6,7 @@ const initialItemsState = {
     displayNewItemForm: false,
     viewingItem: {},
     addedItemsCount: 0,
+    lastRegisteredId: 10000,
     editingItem: {}
 }
 
@@ -17,8 +18,12 @@ export default function items (state=initialItemsState, action) {
                 addedItemsCount: state.addedItemsCount+1,
                 savedItems: [
                     ...state.savedItems,
-                    state.newItem
-                ]
+                    {
+                        ...state.newItem,
+                        id: state.lastRegisteredId+1
+                    }
+                ],
+                lastRegisteredId: state.lastRegisteredId+1
             })
         
         case ACTION_TYPES.DISPLAY_NEW_ITEM_FORM:
@@ -31,12 +36,23 @@ export default function items (state=initialItemsState, action) {
             return ({
                 ...state,
                 newItem: {
-                    id: 10000 + state.addedItemsCount,
                     name: "",
                     group: "",
-                    buyPrice: 0,
-                    remAmount: 0,
-                    sellPrice: 0,
+                    buyPrice: "",
+                    wholeUnit: "کارتن",
+                    wholeRemAmount: "",
+                    retialUnit: "قوطی",
+                    retailRemAmount: "",
+                    retialUnitRemInWholeUnit: "",
+                    retailUnitCashSellPrice: "",
+                    retailUnitLoanSellPrice: "",
+                    cashSellPrice: "",
+                    chequeSellPrice: "",
+                    loanSellPrice: "",
+                    vipSellPrice: "",
+                    costumerPrice: "",
+                    seller: "",
+                    company: "",
                     buyFactors: [],
                     sellFactors: []
                 }
@@ -54,7 +70,7 @@ export default function items (state=initialItemsState, action) {
         case ACTION_TYPES.SET_EDITING_ITEM:
             return ({
                 ...state,
-                editingItem: state.savedItems.filter(item => item.id === action.id)[0]
+                editingItem: state.savedItems.filter(item => item.id == action.id)[0]
             })
         
         case ACTION_TYPES.UPDATE_EDITING_ITEM:
@@ -75,6 +91,12 @@ export default function items (state=initialItemsState, action) {
                         item    
                 )
             })
+
+            case ACTION_TYPES.UNSET_EDITING_ITEM:
+                return ({
+                    ...state,
+                    editingItem: {}
+                })
         
         case ACTION_TYPES.SET_VIEWING_ITEM:
             return ({
@@ -85,7 +107,8 @@ export default function items (state=initialItemsState, action) {
         case ACTION_TYPES.REMOVE_ITEM:
             return ({
                 ...state,
-                savedItems: state.savedItems.filter(item => item.id !== action.id)
+                savedItems: state.savedItems.filter(item => item.id !== action.id),
+                addedItemsCount: state.addedItemsCount - 1
             })
         
         default:
