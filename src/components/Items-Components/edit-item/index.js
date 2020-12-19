@@ -1,0 +1,1 @@
+import ItemEditionBase from './edit-item'
