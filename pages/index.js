@@ -11,7 +11,7 @@ import Dashboard from '../src/containers/dashboard/dashboard'
 export default function App() {
   return (
     <Box>
-      <Grid container spacing={1}>
+      <Grid container>
         <Grid item xs={12} md={9}>
           <Dashboard />
         </Grid>
