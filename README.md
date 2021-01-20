@@ -1,30 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Umde Application
 
-## Getting Started
+### The project development is still in progress... !!
+Online deployment on vercel: https://umde-app.vercel.app/
+You can even install the pwa locally by visiting the deployment link.
 
-First, run the development server:
+## Why I'm interested in this project
+This is a personal pwa project which I intend to develop for my father's wholesale store. 
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## What it can do
+It allows products storage, prices, trades, costumers and orders managements. It makes the manager able to:
+- Have a list of all products, knowing the prices they bought them, the amount remaining in the storage and the prices for selling to different types of costumers.
+- Keep the costumers organized and know the upcoming orders.
+- Make trade bills and have a history of payments and debts and loans.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## How to run?
+Currently this project only works serverlessly powered by Next-pwa and Web LocalStorage API. You only have to do the followings to run it on your own machine:
+- Install Node.js.
+- Clone the repository and in the main directory type command: ```$ npm i```
+- Start the development server by simply typing: ```$ npm run dev``` and redirect to http://localhost:3000
+- Or you can start production server by typing commands: ```$ npm run build``` and then ```$ npm run start``` and redirect to http://localhost:3000
